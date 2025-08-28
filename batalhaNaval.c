@@ -88,39 +88,39 @@ void mostraTabuleiro() {
 const int navio1[3] = {3,3,3}, navio2[3] = {3,3,3};
 
 // posicionamento dos navios no tabuleiro
-void posicionaNavio(int x, int y, char hv, char* navio){
+void posicionaNavio(int x, int y, char orientacao, int* navio, char* nomeNavio){
     // validação das coordenadas
 
     // testa ocupação do tabuleiro
-    if (hv == 'v') {
+    if (orientacao == 'v') {
         if (tabuleiro[x][y] != 0 || tabuleiro[x][y+1] != 0 || tabuleiro[x][y+2] != 0) {
-            printf("\nPosição inválida para o %s: (%d, %d)! Já ocupado\n", navio, x, y);
+            printf("\nPosição inválida para o [ %s ]: (%d, %d)! Já ocupado\n", nomeNavio, x, y);
             return;
         }
 
         if (x > 7) {
-            printf("\nPosição inválida para o %s: (%d, %d)! Vertical\n", navio, x, y);
+            printf("\nPosição inválida para o [ %s ]: (%d, %d)! Vertical\n", nomeNavio, x, y);
             return;
         }
     }
 
     // testa limites da área do tabuleiro
-    if (hv == 'h') {
+    if (orientacao == 'h') {
         if (tabuleiro[x][y] != 0 || tabuleiro[x+1][y] != 0 || tabuleiro[x+2][y] != 0) {
-            printf("\nPosição inválida para o %s: (%d, %d)! Já ocupado\n", navio, x, y);
+            printf("\nPosição inválida para o [ %s ]: (%d, %d)! Já ocupado\n", nomeNavio, x, y);
             return;
         }
 
         if (y > 7) {
-            printf("\nPosição inválida para o %s: (%d, %d)! Horizontal\n", navio, x, y);
+            printf("\nPosição inválida para o [ %s ]: (%d, %d)! Horizontal\n", nomeNavio, x, y);
             return;
         }
     }
 
     // preenche o tabuleiro com o navio informado na orientação escolhida
     for (int i = 1; i <= 3; i++) {
-        tabuleiro[x][y] = 3;
-        hv == 'v' ? x++ : y++;
+        tabuleiro[x][y] = navio[i-1];
+        orientacao == 'v' ? x++ : y++;
     }
 }
 
@@ -144,8 +144,8 @@ void partida() {
     scanf("%d", &y);
     printf("Orientação (v)ertical (h)orizontal : ");
     scanf(" %c", &orientacao);
-    
-    posicionaNavio(x, y, orientacao, "Navio 1"); // navio 1 recebe coordenadas e orientação
+
+    posicionaNavio(x, y, orientacao, navio1, "Navio 1"); // navio 1 recebe coordenadas e orientação
 
     // recebe dados do navio 2 para processar
     printf("\n*** Navio 2\n");
@@ -156,8 +156,8 @@ void partida() {
     printf("Orientação (v)ertical (h)orizontal : ");
     scanf(" %c", &orientacao);
 
-    posicionaNavio(x, y, orientacao, "Navio 2"); // navio 2 recebe coordenadas e orientação
-    
+    posicionaNavio(x, y, orientacao, navio2, "Navio 2"); // navio 2 recebe coordenadas e orientação
+
     mostraTabuleiro();
 }
 
