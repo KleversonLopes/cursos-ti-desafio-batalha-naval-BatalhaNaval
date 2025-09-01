@@ -264,7 +264,7 @@ void ataqueCone(int x, int y) {
             if (cone[i-1][j-1] == 1) {
                 int ataqueX = x + (i - 2); // ajusta a linha do ataque
                 int ataqueY = y + (j - 3); // ajusta a coluna do ataque
-                tabuleiro[ataqueX][ataqueY] = 1; // marca o ataque no tabuleiro
+                tabuleiro[ataqueX][ataqueY] = 5; // marca o ataque no tabuleiro
             }
         }
     }
@@ -278,7 +278,7 @@ void ataqueCruz(int x, int y) {
             if (cruz[i-1][j-1] == 1) {
                 int ataqueX = x + (i - 2); // ajusta a linha do ataque
                 int ataqueY = y + (j - 3); // ajusta a coluna do ataque
-                tabuleiro[ataqueX][ataqueY] = 1; // marca o ataque no tabuleiro
+                tabuleiro[ataqueX][ataqueY] = 5; // marca o ataque no tabuleiro
             }
         }
     }
@@ -292,7 +292,7 @@ void ataqueOctaedro(int x, int y) {
             if (octaedro[i-1][j-1] == 1) {
                 int ataqueX = x + (i - 2); // ajusta a linha do ataque
                 int ataqueY = y + (j - 3); // ajusta a coluna do ataque
-                tabuleiro[ataqueX][ataqueY] = 1; // marca o ataque no tabuleiro
+                tabuleiro[ataqueX][ataqueY] = 5; // marca o ataque no tabuleiro
             }
         }
     }
